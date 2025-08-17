@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cybersecurity Hub</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: linear-gradient(
+          135deg,
+          #0a0e1a 0%,
+          #1a1d2e 50%,
+          #2d3748 100%
+        );
+        color: #e2e8f0;
+        font-family: "JetBrains Mono", monospace;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .hero-section {
+        text-align: center;
+        padding: 80px 20px 60px;
+        position: relative;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      .hero-title {
+        font-size: clamp(2.5rem, 8vw, 6rem);
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        margin-bottom: 30px;
+        background: linear-gradient(45deg, #ff6b35, #ff8e53, #ffab76);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 0 30px rgba(255, 107, 53, 0.5);
+        animation: titleGlow 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes titleGlow {
+        from {
+          filter: drop-shadow(0 0 20px rgba(255, 107, 53, 0.7));
+        }
+        to {
+          filter: drop-shadow(0 0 40px rgba(255, 107, 53, 0.9));
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-100px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(100px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes pulseGlow {
+        0%,
+        100% {
+          box-shadow: 0 0 5px rgba(74, 158, 255, 0.5);
+        }
+        50% {
+          box-shadow: 0 0 20px rgba(74, 158, 255, 0.8),
+            0 0 30px rgba(74, 158, 255, 0.6);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes chartFadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .hero-subtitle {
+        font-size: clamp(1rem, 3vw, 1.4rem);
+        color: #4a9eff;
+        margin-bottom: 50px;
+        font-weight: 400;
+        letter-spacing: 0.05em;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        animation: fadeInUp 1s ease-out 0.3s both;
+      }
+
+.learn-more-btn {
+  background: linear-gradient(45deg, #00d4ff, #4a9eff);
+  border: none;
+  padding: 15px 30px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+  font-family: "JetBrains Mono", monospace;
+  display: inline-block;
+}
+
+.learn-more-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5);
+  background: linear-gradient(45deg, #4a9eff, #00d4ff);
+}
+
+
+      .nav-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 80px;
+        animation: fadeInUp 1s ease-out 0.6s both;
+      }
+
+      .nav-btn {
+        background: linear-gradient(45deg, #ff6b35, #ff8e53);
+        border: none;
+        padding: 15px 30px;
+        font-size: 1rem;
+        font-weight: 700;
+        color: white;
+        cursor: pointer;
+        border-radius: 8px;
+        letter-spacing: 0.05em;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      .nav-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 107, 53, 0.5);
+        background: linear-gradient(45deg, #ff8e53, #ffab76);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .content-section {
+        background: rgba(15, 23, 42, 0.8);
+        border: 2px solid #1e293b;
+        border-radius: 12px;
+        margin: 40px 0;
+        padding: 40px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .content-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #4a9eff, #00d4ff);
+        border-radius: 12px 12px 0 0;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+        color: #4a9eff;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .section-title::before {
+        content: "🔒";
+        font-size: 1.5rem;
+      }
+
+      .tips-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        margin: 40px 0;
+      }
+
+      .tip-card {
+        background: rgba(30, 41, 59, 0.6);
+        border: 1px solid #334155;
+        border-radius: 10px;
+        padding: 25px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        animation: fadeInUp 0.8s ease-out forwards;
+        transform: translateY(50px);
+        opacity: 0;
+      }
+
+      .tip-card:nth-child(odd) {
+        animation: slideInLeft 0.8s ease-out forwards;
+        transform: translateX(-100px);
+      }
+
+      .tip-card:nth-child(even) {
+        animation: slideInRight 0.8s ease-out forwards;
+        transform: translateX(100px);
+      }
+
+      .tip-card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .tip-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .tip-card:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .tip-card:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .tip-card:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      .tip-card:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+
+      .tip-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(180deg, #ff6b35, #4a9eff);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .tip-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        border-color: #4a9eff;
+        box-shadow: 0 15px 40px rgba(74, 158, 255, 0.3);
+        background: rgba(30, 41, 59, 0.8);
+      }
+
+      .tip-card:hover::before {
+        opacity: 1;
+      }
+
+      .tip-title {
+        font-size: 1.3rem;
+        color: #e2e8f0;
+        margin-bottom: 15px;
+        font-weight: 700;
+      }
+
+      .tip-content {
+        line-height: 1.7;
+        color: #cbd5e1;
+      }
+
+      .highlight-orange {
+        color: #ff8e53;
+        font-weight: 700;
+      }
+
+      .highlight-blue {
+        color: #4a9eff;
+        font-weight: 700;
+      }
+
+      .highlight-red {
+        color: #ef4444;
+        font-weight: 700;
+      }
+
+      .tool-section {
+        background: rgba(15, 23, 42, 0.9);
+        border: 2px solid #1e293b;
+        border-radius: 12px;
+        padding: 40px;
+        margin: 60px 0;
+        position: relative;
+        animation: fadeInUp 0.8s ease-out;
+        transition: all 0.4s ease;
+      }
+
+      .tool-section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      .tool-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #ff6b35, #ff8e53);
+        border-radius: 12px 12px 0 0;
+      }
+
+      .tool-title {
+        font-size: 1.8rem;
+        color: #ff8e53;
+        margin-bottom: 30px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .input-group {
+        position: relative;
+        margin: 20px 0;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .password-input,
+      .password-output {
+        width: 100%;
+        padding: 15px 50px 15px 20px;
+        background: rgba(30, 41, 59, 0.8);
+        border: 2px solid #334155;
+        border-radius: 8px;
+        color: #e2e8f0;
+        font-size: 1rem;
+        font-family: "JetBrains Mono", monospace;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .password-input:focus {
+        outline: none;
+        border-color: #4a9eff;
+        box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.1);
+        animation: pulseGlow 2s infinite;
+        transform: scale(1.02);
+      }
+
+      .toggle-visibility {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+        color: #94a3b8;
+        transition: color 0.3s ease;
+      }
+
+      .toggle-visibility:hover {
+        color: #4a9eff;
+      }
+
+      .strength-meter {
+        margin: 20px auto;
+        max-width: 500px;
+      }
+
+      .strength-bar {
+        height: 8px;
+        background: rgba(30, 41, 59, 0.8);
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 10px;
+      }
+
+      .strength-fill {
+        height: 100%;
+        width: 0%;
+        border-radius: 4px;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        background: linear-gradient(90deg, #ef4444, #f59e0b, #10b981);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .strength-fill::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        animation: shimmer 2s infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      .strength-info {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9rem;
+        color: #94a3b8;
+      }
+
+      .generate-btn {
+        background: linear-gradient(45deg, #4a9eff, #00d4ff);
+        border: none;
+        padding: 12px 25px;
+        color: white;
+        font-weight: 700;
+        border-radius: 8px;
+        cursor: pointer;
+        font-family: "JetBrains Mono", monospace;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        margin-top: 15px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .generate-btn:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 8px 20px rgba(74, 158, 255, 0.5);
+        animation: float 2s ease-in-out infinite;
+      }
+
+      .generate-btn:active {
+        transform: translateY(-1px) scale(1.02);
+      }
+
+      /* Adjustments for larger charts */
+      .charts-grid {
+        display: grid;
+        /* Changed minmax from 400px to 600px for larger columns */
+        grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+        gap: 40px;
+        margin: 60px 0;
+      }
+
+      .chart-container {
+        background: rgba(15, 23, 42, 0.9);
+        border: 2px solid #1e293b;
+        border-radius: 12px;
+        padding: 30px;
+        position: relative;
+        animation: chartFadeIn 1s ease-out;
+        transition: all 0.4s ease;
+      }
+
+      .chart-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      .chart-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #4a9eff, #00d4ff);
+        border-radius: 12px 12px 0 0;
+      }
+
+      .chart-canvas {
+        .chart-canvas {
+          .chart-canvas {
+            height: 300em;
+            animation: chartFadeIn 1.5s ease-out 0.5s both;
+          }
+        }
+        animation: chartFadeIn 1.5s ease-out 0.5s both;
+      }
+
+      .charts-section-title {
+        font-size: 2.5rem;
+        color: #4a9eff;
+        text-align: center;
+        margin: 80px 0 40px;
+        background: linear-gradient(45deg, #4a9eff, #ff6b35);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+      }
+      .top-home-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  z-index: 999;
+}
+
+.top-home-btn a {
+  background: linear-gradient(45deg, #00d4ff, #4a9eff);
+  color: white;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: "JetBrains Mono", monospace;
+  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.top-home-btn a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5);
+}
+
+
+      .footer {
+        text-align: center;
+        padding: 40px 20px;
+        border-top: 1px solid #334155;
+        margin-top: 80px;
+        color: #64748b;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        .nav-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .nav-btn {
+          width: 200px;
+        }
+
+        .tips-grid,
+        .charts-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .content-section,
+        .chart-container {
+          padding: 25px;
+        }
+
+        .charts-grid {
+          gap: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top-right Home Button -->
+<div class="top-home-btn">
+  <a href="index.html">Home</a>
+</div>
+
+    <div class="hero-section">
+      <h1 class="hero-title">Essential Security Tips</h1>
+      <p class="hero-subtitle">
+        Securing the digital world through awareness, action, and
+        responsibility.
+      </p>
+    </div>
+
+    <div class="container">
+      <div class="tips-grid">
+        <div class="tip-card">
+          <h3 class="tip-title">🔐 Secure Your Accounts</h3>
+          <p class="tip-content">
+            Enable
+            <span class="highlight-blue">multi-factor authentication</span> and
+            avoid password reuse. Use a
+            <span class="highlight-blue">password manager</span>
+            and protect recovery info. Log out on public devices and don't trust
+            links in emails. Your accounts are only as strong as your weakest
+            one.
+          </p>
+        </div>
+
+        <div class="tip-card">
+          <h3 class="tip-title">🦠 Avoid Malware</h3>
+          <p class="tip-content">
+            Install reliable <span class="highlight-blue">antivirus</span> and
+            keep your system updated. Don't download cracked software or open
+            suspicious email attachments. Use a
+            <span class="highlight-blue">firewall</span> and watch for system
+            slowdowns or unexpected pop-ups.
+          </p>
+        </div>
+
+        <div class="tip-card">
+          <h3 class="tip-title">🌐 Protect Your Privacy</h3>
+          <p class="tip-content">
+            Browse with a <span class="highlight-blue">VPN</span> and stick to
+            <span class="highlight-blue">HTTPS</span> websites. Adjust privacy
+            settings on your browser and social media. Don't overshare online,
+            and revoke unused app permissions regularly.
+          </p>
+        </div>
+      </div>
+
+      <div class="tool-section">
+        <h2 class="tool-title">🧪 Password Strength Analyzer</h2>
+
+        <div class="input-group">
+          <input
+            type="password"
+            id="passwordInput"
+            class="password-input"
+            placeholder="Enter your password to analyze..."
+          />
+          <button class="toggle-visibility" id="toggleBtn">👁️</button>
+        </div>
+
+        <div class="strength-meter">
+          <div class="strength-bar">
+            <div class="strength-fill" id="strengthBar"></div>
+          </div>
+          <div class="strength-info">
+            <span id="strengthLevel">Strength: -</span>
+            <span id="crackTime">Crack Time: -</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tips-grid">
+        <div class="tip-card">
+          <h3 class="tip-title">🎣 Be Phish-Aware</h3>
+          <p class="tip-content">
+            Never trust unsolicited messages asking for logins. Check the
+            sender's email and avoid clicking unknown links. Don't fall for
+            scare tactics like "Your account is compromised!".
+            <span class="highlight-red">Phishing</span>
+            is a hacker's favorite attack vector.
+          </p>
+        </div>
+
+        <div class="tip-card">
+          <h3 class="tip-title">🧯 Backup Regularly</h3>
+          <p class="tip-content">
+            Ransomware can lock you out completely. Have backups on a
+            <span class="highlight-blue">cloud drive</span> and external disk.
+            Test your backups to ensure they actually restore. Use encrypted
+            storage for sensitive files - it's your last line of defense.
+          </p>
+        </div>
+
+        <div class="tip-card">
+          <h3 class="tip-title">📱 Lock Down Devices</h3>
+          <p class="tip-content">
+            Use biometrics or strong passcodes. Disable auto-connect for
+            Wi-Fi/Bluetooth. Install security updates promptly. Don't root or
+            jailbreak unless you understand the risks. If stolen, ensure
+            attackers find nothing usable.
+          </p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin: 20px 0">
+        <a href="charts.html" class="nav-btn"
+          >📊 See Cybersecurity Statistics</a
+        >
+      </div>
+
+      <div class="tool-section">
+        <h2 class="tool-title">🔐 Secure Password Generator</h2>
+
+        <div class="input-group">
+          <input
+            type="text"
+            id="generatedPassword"
+            class="password-output"
+            placeholder="Click generate to create a secure password..."
+            readonly
+          />
+        </div>
+
+        <button class="generate-btn" onclick="generateSecurePassword()">
+          Generate Secure Password
+        </button>
+      </div>
+
+    <footer class="footer">
+      <p>
+        &copy; 2025 CyberSec Hub | Protecting Digital Futures | Stay Vigilant 🛡️
+      </p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+
+    <script>
+      // Password functionality
+      const passwordInput = document.getElementById("passwordInput");
+      const strengthBar = document.getElementById("strengthBar");
+      const strengthLevel = document.getElementById("strengthLevel");
+      const crackTime = document.getElementById("crackTime");
+      const toggleBtn = document.getElementById("toggleBtn");
+
+      function calculatePasswordEntropy(password) {
+        let charsetSize = 0;
+        if (/[a-z]/.test(password)) charsetSize += 26;
+        if (/[A-Z]/.test(password)) charsetSize += 26;
+        if (/[0-9]/.test(password)) charsetSize += 10;
+        if (/[^a-zA-Z0-9]/.test(password)) charsetSize += 32;
+
+        return password.length * Math.log2(charsetSize || 1);
+      }
+
+      function estimateCrackTime(entropy) {
+        const guessesPerSecond = 1e10;
+        const totalGuesses = Math.pow(2, entropy - 1);
+        const seconds = totalGuesses / guessesPerSecond;
+
+        if (seconds < 60) return `${Math.max(1, Math.round(seconds))} seconds`;
+        if (seconds < 3600) return `${Math.round(seconds / 60)} minutes`;
+        if (seconds < 86400) return `${Math.round(seconds / 3600)} hours`;
+        if (seconds < 31536000) return `${Math.round(seconds / 86400)} days`;
+        if (seconds < 31536000000)
+          return `${Math.round(seconds / 31536000)} years`;
+        return "Centuries";
+      }
+
+      function getStrengthScore(entropy) {
+        if (entropy < 25) return 1;
+        if (entropy < 35) return 2;
+        if (entropy < 50) return 3;
+        if (entropy < 65) return 4;
+        return 5;
+      }
+
+      function getStrengthLabel(score) {
+        const labels = ["Very Weak", "Weak", "Fair", "Strong", "Very Strong"];
+        return labels[score - 1] || "Unknown";
+      }
+
+      passwordInput.addEventListener("input", function () {
+        const password = this.value;
+
+        if (!password) {
+          strengthBar.style.width = "0%";
+          strengthLevel.textContent = "Strength: -";
+          crackTime.textContent = "Crack Time: -";
+          return;
+        }
+
+        const entropy = calculatePasswordEntropy(password);
+        const score = getStrengthScore(entropy);
+        const label = getStrengthLabel(score);
+        const time = estimateCrackTime(entropy);
+
+        strengthBar.style.width = `${score * 20}%`;
+        strengthLevel.textContent = `Strength: ${label}`;
+        crackTime.textContent = `Crack Time: ${time}`;
+
+        if (score <= 2) {
+          strengthBar.style.background = "#ef4444";
+        } else if (score <= 3) {
+          strengthBar.style.background = "#f59e0b";
+        } else {
+          strengthBar.style.background = "#10b981";
+        }
+      });
+
+      toggleBtn.addEventListener("click", function () {
+        const type =
+          passwordInput.getAttribute("type") === "password"
+            ? "text"
+            : "password";
+        passwordInput.setAttribute("type", type);
+        this.textContent = type === "password" ? "👁️" : "🙈";
+      });
+
+      function generateSecurePassword(length = 16) {
+        const lowercase = "abcdefghijklmnopqrstuvwxyz";
+        const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const numbers = "0123456789";
+        const symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+        const allChars = lowercase + uppercase + numbers + symbols;
+        let password = "";
+        password += lowercase[Math.floor(Math.random() * lowercase.length)];
+        password += uppercase[Math.floor(Math.random() * uppercase.length)];
+        password += numbers[Math.floor(Math.random() * numbers.length)];
+        password += symbols[Math.floor(Math.random() * symbols.length)];
+        for (let i = 4; i < length; i++) {
+          password += allChars[Math.floor(Math.random() * allChars.length)];
+        }
+        password = password
+          .split("")
+          .sort(() => Math.random() - 0.5)
+          .join("");
+        document.getElementById("generatedPassword").value = password;
+      }
+    </script>
+  </body>
+</html>
